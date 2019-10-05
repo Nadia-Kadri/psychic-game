@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Psychic Game</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <div class="container custcontainer">
+        <h1>The Psychic Game</h1>
+        <p>Guess what letter I'm thinking of</p>
+        <p id="wins-text">Wins: 0</p>
+        <p id="losses-text">Losses: 0</p>
+        <p id="guesses-left">Guesses Left: 9</p>
+        <p id="wrong-guesses">Your Guesses so far: </p>
+    </div>
+    
+    <script>
+
+        let winsText = document.getElementById("wins-text");
+        let lossesText = document.getElementById("losses-text");
+        let guessesLeft = document.getElementById("guesses-left");
+        let wrongGuesses = document.getElementById("wrong-guesses");
+
+        let wins = 0;
+        let losses = 0;
+        let remainingGuesses = 9;
+        let guessesSoFar = [];
+
+        let computerLetters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+
+        let randomNum = Math.floor(Math.random() * computerLetters.length);
+            let computerRandomLetter = computerLetters[randomNum];
+                console.log(computerRandomLetter);
+
+        function reset () {
+            remainingGuesses = 9;
+            guessesSoFar = [];
+        }
+
+        document.onkeyup = function(event) {
+            let userGuess = event.key;
+            console.log(userGuess);
+
+            if (userGuess !== computerRandomLetter) {
+                guessesSoFar.push(userGuess);
+                remainingGuesses--
+                    if (remainingGuesses < 1) {
+                        losses++
+                        reset ()
+                    }
+            }
+
+            if (userGuess === computerRandomLetter) {
+                wins++
+                reset ()
+            } 
+
+            winsText.textContent = `Wins: ${wins}`;
+            lossesText.textContent = `Losses: ${losses}`;
+            guessesLeft.textContent = `Guesses Left: ${remainingGuesses}`;
+            wrongGuesses.textContent = `Your Guesses so far: ${guessesSoFar.join(" ")}`;
+        }
+        
+        
+    </script>
+    
+</body>
+</html>
