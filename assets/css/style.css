@@ -1,0 +1,11 @@
+body {
+    background-image: url(../images/leon-contreras-qpdfU6vehgs-unsplash.jpg)
+}
+
+.custcontainer {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    background-color: white;
+    width: 65%;
+    padding: 20px;
+}
