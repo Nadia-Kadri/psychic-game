@@ -3,9 +3,18 @@ body {
 }
 
 .custcontainer {
-    margin-top: 30px;
-    margin-bottom: 30px;
-    background-color: white;
-    width: 65%;
-    padding: 20px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  background-color: white;
+  width: 65%;
+  padding: 20px;
+}
+
+.error-message {
+  transition: all .5s ease;
+}
+
+.error-message-transition {
+  transform: scale(1.02);
+  color: red;
 }
